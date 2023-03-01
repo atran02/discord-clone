@@ -1,10 +1,11 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 6rem; */
   min-height: 100vh;
+  background-color: rgb(248, 128, 154);
 }
 
 .description {
@@ -275,4 +276,61 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.nav{
+  background: rgb(248, 128, 154);
+  color: white;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.userCont{
+  display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    /* padding: 1em; */
+}
+
+.listChan{
+  overflow: auto;
+  scrollbar-width: 0;
+  height: 89vh;
+  background-color: rgb(255, 177, 194);
+
+}
+
+.mesDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* margin: 1em; */
+  background-color: rgb(255, 214, 220);
+}
+
+.chanItem{
+  border: 1px none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin: 0.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.chanItem:hover{
+  /* border: 1px solid rgb(255, 255, 255); */
+  background-color: rgb(255, 205, 215);
+}
+.cNameCont{
+  background-color: rgb(255, 177, 194);
+  border-bottom: 3px solid rgb(248, 128, 154);
+  color: white;
+  padding: 0.5em;
+}
+.cMesCont{
+  background-color: rgb(252, 219, 226);
+  border-bottom: 3px solid rgb(255, 144, 168);
+  color: rgb(237, 71, 98);
+  padding: 1.08em;
+  width: 100vw;
 }
