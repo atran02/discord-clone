@@ -38,6 +38,7 @@ export default function Channels({channels,channelId, messages: initialMessages}
     // useEffect
 
     const [userName, setUserName] = useState('')
+    const [channelName, setChannelName] = useState('')
     const [text, setText] = useState('')
     const [messages, setMessages] = useState(initialMessages)
 
@@ -52,6 +53,19 @@ export default function Channels({channels,channelId, messages: initialMessages}
         const newMessage = result.data
 
         setMessages([...messages, newMessage])
+    }
+
+    const handleSubmit2 = async (e) => {
+        e.preventDefault()
+        console.log('submit', channelName, text)
+        // Send to the database (POST)
+
+        const result = await axios.post(`/api/channels`, {
+            channelName, text
+        })
+        const newMessage = result.data
+
+        setChannelName([...messages, newMessage])
     }
 
     return (
@@ -70,6 +84,11 @@ export default function Channels({channels,channelId, messages: initialMessages}
                     <Link href={`/channels/${channel.id}`}><li key={channel.id} className={styles.chanItem}>{channel.name}</li></Link>
                     ))}
             </ul>
+            <form onSubmit={handleSubmit2}>
+                <input type="text" value={channelName} onChange={(e) => setUserName(e.target.value)} />
+                <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+                <button type="submit">Send</button>
+            </form>
             </div>
         </div>
         <div className={styles.mesDiv}>
@@ -82,7 +101,7 @@ export default function Channels({channels,channelId, messages: initialMessages}
                 {/* <input type="text" />
                 <input type="text" />
                 <button>Send</button> */}
-                <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
                 <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
                 <button type="submit">Send</button>
@@ -103,7 +122,6 @@ export async function getServerSideProps() {
     return {
         props: {
             channels: JSON.parse(JSON.stringify(channels)),
-            
 
         }
     }
